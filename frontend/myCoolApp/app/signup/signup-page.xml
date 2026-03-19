@@ -1,0 +1,24 @@
+<Page
+    navigatingTo="onNavigatingTo"
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="app-header">
+        <NavigationButton visibility="hidden"></NavigationButton>
+        <GridLayout columns="50, *" class="app-header-grid">
+            <Label class="action-bar-title app-header-title" text="Sign Up" colSpan="2"/>
+            <Label col="0" class="fas app-header-icon" text="&#xf0c9;" tap="onDrawerButtonTap" horizontalAlignment="center" verticalAlignment="center"/>
+        </GridLayout>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="page__content p-20" spacing="12">
+            <Label class="h2" text="Sign Up" />
+            <TextField hint="Username" text="{{ username }}" />
+            <TextField hint="Password" secure="true" text="{{ password }}" />
+            <TextField hint="Confirm Password" secure="true" text="{{ confirmPassword }}" />
+            <Button text="Create Account" tap="onSignupTap" />
+            <Button class="btn btn-outline" text="Already have an account? Login" tap="onGoToLoginTap" />
+            <Label text="{{ error }}" class="text-danger" textWrap="true" />
+        </StackLayout>
+    </ScrollView>
+</Page>
