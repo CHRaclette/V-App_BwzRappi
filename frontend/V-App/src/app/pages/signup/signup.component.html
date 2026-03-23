@@ -1,0 +1,26 @@
+<ActionBar class="app-header">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <GridLayout columns="50, *" class="app-header-grid">
+    <Label class="action-bar-title app-header-title" text="Sign Up" colSpan="2"></Label>
+    <Label
+      col="0"
+      class="fas app-header-icon"
+      text="&#xf0c9;"
+      horizontalAlignment="center"
+      verticalAlignment="center"
+      (tap)="onDrawerButtonTap()"
+    ></Label>
+  </GridLayout>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="page__content p-20" spacing="12">
+    <Label class="h2" text="Sign Up"></Label>
+    <TextField hint="Username" [(ngModel)]="username"></TextField>
+    <TextField hint="Password" secure="true" [(ngModel)]="password"></TextField>
+    <TextField hint="Confirm Password" secure="true" [(ngModel)]="confirmPassword"></TextField>
+    <Button text="Create Account" (tap)="onSignupTap()"></Button>
+    <Button class="btn btn-outline" text="Already have an account? Login" (tap)="onGoToLoginTap()"></Button>
+    <Label [text]="error" class="text-danger" textWrap="true"></Label>
+  </StackLayout>
+</ScrollView>

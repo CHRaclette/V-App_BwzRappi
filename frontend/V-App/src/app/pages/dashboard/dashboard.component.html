@@ -1,0 +1,92 @@
+<ActionBar class="app-header">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <GridLayout columns="50, *, 50" class="app-header-grid">
+    <Label class="action-bar-title app-header-title" text="Dashboard" col="1"></Label>
+    <Label
+      col="0"
+      class="fas app-header-icon"
+      text="&#xf0c9;"
+      horizontalAlignment="center"
+      verticalAlignment="center"
+      (tap)="onDrawerButtonTap()"
+    ></Label>
+    <Label
+      col="2"
+      class="fas app-header-icon app-header-icon-secondary"
+      text="&#xf021;"
+      horizontalAlignment="center"
+      verticalAlignment="center"
+      (tap)="refreshAll()"
+    ></Label>
+  </GridLayout>
+</ActionBar>
+
+<GridLayout rows="auto, *" columns="*">
+  <StackLayout row="0" class="card p-14">
+    <Label class="h2" [text]="reservationCountText"></Label>
+    <Button text="Reserve Room" (tap)="openCreateModal()"></Button>
+  </StackLayout>
+
+  <ListView row="1" [items]="reservations" (itemTap)="onReservationItemTap($event)" class="m-t-10">
+    <ng-template let-item="item">
+      <StackLayout class="card p-16 m-y-8">
+        <Label class="h2" [text]="item.locationLabel || 'No room'"></Label>
+        <Label class="text-muted" [text]="item.date + ' • ' + item.startDisplay + ' - ' + item.endDisplay"></Label>
+
+        <StackLayout class="divider-soft"></StackLayout>
+
+        <StackLayout spacing="4">
+          <Label [text]="'Features: ' + (item.featuresLabel || '')" textWrap="true"></Label>
+          <Label [text]="'Comments: ' + (item.comments || '')" textWrap="true"></Label>
+          <Label [text]="'Participants: ' + (item.participants || '')" textWrap="true"></Label>
+        </StackLayout>
+
+        <StackLayout class="divider-muted"></StackLayout>
+
+        <StackLayout spacing="2">
+          <Label class="text-muted small" [text]="'Public: ' + (item.publicKey || '')" textWrap="true"></Label>
+          <Label class="text-muted small" [text]="'Private: ' + (item.privateKey || '')" textWrap="true"></Label>
+        </StackLayout>
+
+        <GridLayout columns="*, *" class="m-t-10">
+          <Button col="0" text="Edit" class="btn btn-primary m-r-5" (tap)="beginEdit(item)"></Button>
+          <Button col="1" text="Delete" class="btn btn-outline" (tap)="deleteReservation(item.privateKey)"></Button>
+        </GridLayout>
+      </StackLayout>
+    </ng-template>
+  </ListView>
+
+  <GridLayout rowSpan="2" class="dashboard-modal-overlay" [visibility]="isReservationModalVisible ? 'visible' : 'collapsed'">
+    <GridLayout class="dashboard-modal-sheet" rows="auto, *">
+      <GridLayout columns="*, auto" class="p-16">
+        <Label col="0" class="h3" [text]="isEditMode ? 'Edit Appointment' : 'Add Appointment'"></Label>
+        <Button col="1" text="Close" (tap)="closeReservationModal()"></Button>
+      </GridLayout>
+
+      <ScrollView row="1">
+        <StackLayout class="p-16" spacing="10">
+          <TextField hint="Date (YYYY-MM-DD)" [(ngModel)]="editedDate"></TextField>
+          <TextField hint="Start Time (HH:MM:SS)" [(ngModel)]="editedStartTime"></TextField>
+          <TextField hint="End Time (HH:MM:SS)" [(ngModel)]="editedEndTime"></TextField>
+
+          <Button [text]="editedLocation || 'Select Room'" (tap)="onOpenRoomPicker()"></Button>
+
+          <Label [text]="availabilityText" [class]="availabilityClass"></Label>
+
+          <TextField hint="Comment" [(ngModel)]="editedComment"></TextField>
+          <TextField hint="Participants" [(ngModel)]="editedParticipants"></TextField>
+
+          <GridLayout columns="*, *">
+            <Button col="0" text="Check" (tap)="checkRoomAvailability()"></Button>
+            <Button
+              col="1"
+              [text]="isEditMode ? 'Update' : 'Save'"
+              [isEnabled]="roomIsAvailable"
+              (tap)="saveReservation()"
+            ></Button>
+          </GridLayout>
+        </StackLayout>
+      </ScrollView>
+    </GridLayout>
+  </GridLayout>
+</GridLayout>

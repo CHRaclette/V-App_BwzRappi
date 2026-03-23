@@ -1,0 +1,74 @@
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+  <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
+    <StackLayout row="0" class="nt-drawer__header">
+      <Image class="nt-drawer__header-image fas t-36" src="font://&#xf2bd;"></Image>
+      <Label class="nt-drawer__header-brand" [text]="userName"></Label>
+      <Label class="nt-drawer__header-footnote" [text]="userFootnote"></Label>
+    </StackLayout>
+
+    <ScrollView row="1" class="nt-drawer__body">
+      <StackLayout>
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/dashboard')"
+          (tap)="onNavItemTap('/dashboard')"
+        >
+          <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
+          <Label col="1" text="Dashboard" class="p-r-10"></Label>
+        </GridLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/public-key')"
+          (tap)="onNavItemTap('/public-key')"
+        >
+          <Label col="0" text="&#xf084;" class="nt-icon fas"></Label>
+          <Label col="1" text="Public Key Lookup" class="p-r-10"></Label>
+        </GridLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/private-key')"
+          (tap)="onNavItemTap('/private-key')"
+        >
+          <Label col="0" text="&#xf1ea;" class="nt-icon far"></Label>
+          <Label col="1" text="Private Key Lookup" class="p-r-10"></Label>
+        </GridLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/login')"
+          (tap)="onNavItemTap('/login')"
+        >
+          <Label col="0" text="&#xf2f6;" class="nt-icon fas"></Label>
+          <Label col="1" text="Login" class="p-r-10"></Label>
+        </GridLayout>
+
+        <StackLayout class="hr"></StackLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/signup')"
+          (tap)="onNavItemTap('/signup')"
+        >
+          <Label col="0" text="&#xf013;" class="nt-icon fas"></Label>
+          <Label col="1" text="Sign Up" class="p-r-10"></Label>
+        </GridLayout>
+
+        <GridLayout columns="auto, *" class="nt-drawer__list-item drawer-logout-item" (tap)="onLogoutTap()">
+          <Label col="0" text="&#xf2f5;" class="nt-icon drawer-logout-icon fas"></Label>
+          <Label col="1" text="Logout" class="p-r-10 drawer-logout-label"></Label>
+        </GridLayout>
+      </StackLayout>
+    </ScrollView>
+  </GridLayout>
+
+  <GridLayout tkMainContent>
+    <page-router-outlet></page-router-outlet>
+  </GridLayout>
+</RadSideDrawer>

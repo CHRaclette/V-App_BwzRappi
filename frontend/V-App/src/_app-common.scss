@@ -1,0 +1,263 @@
+@import '@nativescript/theme/core';
+@import '@nativescript/theme/aqua';
+
+$bg-app: #f3f8fd;
+$surface: #ffffff;
+$surface-soft: #eef5fc;
+$surface-muted: #e6eff8;
+$border: #d6e4f2;
+$text-main: #1f2a37;
+$text-muted: #5d7087;
+$brand: #56a9e6;
+$brand-strong: #3d97da;
+$danger: #c63f3f;
+$danger-soft: #fff1f1;
+
+.fab {
+	font-family: 'Font Awesome 5 Brands', 'fa-brands-400';
+	font-weight: 400;
+}
+
+.fas {
+	font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+	font-weight: 900;
+}
+
+.far {
+	font-family: 'Font Awesome 5 Free', 'fa-regular-400';
+	font-weight: 400;
+}
+
+Page {
+	background-color: $bg-app;
+	color: $text-main;
+}
+
+.page__content {
+	background-color: $bg-app;
+
+	&-icon,
+	&-placeholder {
+		color: $text-muted;
+		text-align: center;
+		vertical-align: middle;
+	}
+
+	&-icon {
+		font-size: 72;
+		margin-top: 20%;
+	}
+}
+
+ActionBar.app-header {
+	background-color: $brand;
+	color: #ffffff;
+}
+
+.action-bar-title.app-header-title {
+	color: #ffffff;
+	font-size: 18;
+	font-weight: 700;
+}
+
+.app-header-grid {
+	padding-left: 8;
+	padding-right: 8;
+}
+
+.app-header-icon {
+	color: #ffffff;
+	width: 34;
+	height: 34;
+	border-radius: 17;
+	text-align: center;
+	vertical-align: middle;
+	background-color: rgba(255, 255, 255, 0.24);
+}
+
+.app-header-icon-secondary {
+	background-color: rgba(255, 255, 255, 0.36);
+}
+
+.nt-drawer__content {
+	background-color: $surface;
+	color: $text-main;
+}
+
+.nt-drawer__header {
+	background-color: $brand;
+	color: #ffffff;
+	padding-top: 18;
+	padding-bottom: 18;
+	border-bottom-width: 1;
+	border-bottom-color: rgba(255, 255, 255, 0.3);
+}
+
+.nt-drawer__header-image {
+	color: #ffffff;
+	background-color: rgba(255, 255, 255, 0.24);
+	border-radius: 34;
+	width: 68;
+	height: 68;
+	text-align: center;
+	vertical-align: middle;
+	margin-bottom: 10;
+}
+
+.nt-drawer__header-brand,
+.nt-drawer__header-footnote {
+	color: #ffffff;
+}
+
+.nt-drawer__content .nt-drawer__list-item {
+	margin-left: 8;
+	margin-right: 8;
+	margin-top: 3;
+	margin-bottom: 3;
+	padding-top: 9;
+	padding-bottom: 9;
+	border-radius: 10;
+	border-width: 1;
+	border-color: $border;
+	background-color: $surface-soft;
+}
+
+.nt-drawer__content .nt-drawer__list-item Label,
+.nt-drawer__content .nt-drawer__list-item .nt-icon,
+.drawer-route-label {
+	color: $text-main;
+}
+
+.nt-drawer__content .nt-drawer__list-item.-selected {
+	background-color: $brand;
+	border-color: $brand;
+}
+
+.nt-drawer__content .nt-drawer__list-item.-selected Label,
+.nt-drawer__content .nt-drawer__list-item.-selected .nt-icon {
+	color: #ffffff;
+	font-weight: 700;
+}
+
+.drawer-route-icon {
+	width: 28;
+	height: 28;
+	border-radius: 14;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #dcefff;
+	margin-left: 8;
+}
+
+.nt-drawer__content .nt-drawer__list-item.-selected .drawer-route-icon {
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+.drawer-route-label {
+	font-size: 15;
+	font-weight: 700;
+	margin-left: 12;
+}
+
+.drawer-logout-item {
+	margin-top: 12;
+	border-color: #f2c8c8;
+	background-color: $danger-soft;
+}
+
+.drawer-logout-item .drawer-logout-label,
+.drawer-logout-item .drawer-logout-icon {
+	color: $danger;
+	font-weight: 700;
+}
+
+.drawer-logout-item .drawer-route-icon {
+	background-color: #ffe1e1;
+}
+
+.card {
+	border-width: 1;
+	border-color: $border;
+	border-radius: 12;
+	background-color: $surface;
+	padding: 2;
+	margin-top: 4;
+	margin-bottom: 4;
+}
+
+.divider-soft,
+.divider-muted {
+	height: 1;
+	margin-top: 8;
+	margin-bottom: 8;
+}
+
+.divider-soft {
+	background-color: #d8e6f4;
+}
+
+.divider-muted {
+	background-color: #e4edf7;
+}
+
+.dashboard-modal-overlay {
+	background-color: rgba(17, 38, 63, 0.35);
+	padding: 16;
+}
+
+.dashboard-modal-sheet {
+	width: 92%;
+	background-color: $surface;
+	border-radius: 14;
+	border-width: 1;
+	border-color: $border;
+	padding: 4;
+}
+
+Button,
+.btn {
+	background-color: $brand;
+	color: #ffffff;
+	border-radius: 10;
+	border-width: 0;
+	font-weight: 600;
+}
+
+Button:highlighted,
+.btn:highlighted {
+	background-color: $brand-strong;
+}
+
+.btn.btn-outline,
+Button.btn-outline {
+	background-color: $surface;
+	color: $text-main;
+	border-width: 1;
+	border-color: $border;
+}
+
+TextField {
+	background-color: $surface;
+	border-width: 1;
+	border-color: $border;
+	border-radius: 10;
+	padding: 10 12;
+	color: $text-main;
+}
+
+.text-danger {
+	color: $danger;
+}
+
+.text-success {
+	color: #1f9e5a;
+}
+
+.text-muted {
+	color: $text-muted;
+}
+
+Label.h2,
+Label.h3 {
+	color: $text-main;
+}

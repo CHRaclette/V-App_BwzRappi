@@ -1,0 +1,35 @@
+<ActionBar class="app-header">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <GridLayout columns="50, *" class="app-header-grid">
+    <Label class="action-bar-title app-header-title" text="Private Key Lookup" colSpan="2"></Label>
+    <Label
+      col="0"
+      class="fas app-header-icon"
+      text="&#xf0c9;"
+      horizontalAlignment="center"
+      verticalAlignment="center"
+      (tap)="onDrawerButtonTap()"
+    ></Label>
+  </GridLayout>
+</ActionBar>
+
+<ScrollView>
+  <StackLayout class="page__content p-20" spacing="12">
+    <TextField hint="Enter private key" [(ngModel)]="privateKey"></TextField>
+    <Button text="Fetch Reservation" (tap)="onSearchTap()"></Button>
+
+    <Label class="h3" [text]="resultTitle"></Label>
+    <StackLayout class="card p-10" [visibility]="hasReservation ? 'visible' : 'collapsed'">
+      <Label [text]="reservation?.locationLabel"></Label>
+      <Label [text]="reservation?.date"></Label>
+      <Label [text]="reservation?.startDisplay + ' - ' + reservation?.endDisplay"></Label>
+      <Label [text]="reservation?.featuresLabel" textWrap="true"></Label>
+      <Label [text]="reservation?.comments" textWrap="true"></Label>
+      <Label [text]="reservation?.participants" textWrap="true"></Label>
+      <Label [text]="'Public key: ' + reservation?.publicKey" textWrap="true"></Label>
+      <Label [text]="'Private key: ' + reservation?.privateKey" textWrap="true"></Label>
+      <Button text="Edit Reservation" (tap)="onEditTap()"></Button>
+      <Button class="btn btn-outline" text="Delete Reservation" (tap)="onDeleteTap()"></Button>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>
