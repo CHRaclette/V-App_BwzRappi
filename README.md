@@ -3,12 +3,12 @@
 Room reservation app with:
 
 - Backend: Spring Boot + MySQL
-- Frontend: NativeScript (JavaScript)
+- Frontend: NativeScript + Angular (TypeScript)
 
 ## Project structure
 
 - Backend: `backend`
-- Frontend: `frontend/myCoolApp`
+- Frontend: `frontend/V-App`
 
 ## Prerequisites
 
@@ -62,12 +62,12 @@ Or Maven wrapper on Windows:
 
 - `http://localhost:8080`
 
-## Frontend setup and run
+## Frontend setup and run (Angular app)
 
 1. Go to frontend app folder:
 
 ```powershell
-cd frontend/myCoolApp
+cd frontend/V-App
 ```
 
 2. Install dependencies:
@@ -79,25 +79,25 @@ npm install
 3. Run on Android emulator/device:
 
 ```powershell
-ns run android
+npx ns run android
 ```
 
 Optional preview mode:
 
 ```powershell
-ns preview
+npx ns preview
 ```
 
 ## How frontend reaches backend
 
 Frontend API base URL logic is in:
 
-- `frontend/myCoolApp/app/shared/api-service.js`
+- `frontend/V-App/src/app/shared/api.service.ts`
 
 Current behavior:
 
-- Android emulator: uses `http://10.0.2.2:8080`
-- Non-Android fallback: tries `http://localhost:8080` then `http://10.0.2.2:8080`
+- Tries `http://localhost:8080`
+- Falls back to `http://10.0.2.2:8080`
 
 If testing on a real phone, use your computer LAN IP in that file, for example:
 
@@ -155,8 +155,8 @@ Reservations:
 	- If Android platform gets corrupted/missing wrappers:
 
 ```powershell
-ns platform remove android
-ns platform add android
+npx ns platform remove android
+npx ns platform add android
 ```
 
 ## Troubleshooting quick checklist
@@ -165,11 +165,11 @@ Backend not reachable from app:
 
 - Confirm backend is running on port 8080.
 - Confirm MySQL is running and credentials are valid.
-- Confirm API base URL in `api-service.js` matches your environment.
+- Confirm API base URL in `api.service.ts` matches your environment.
 
 App starts but looks stale after style changes:
 
-- Stop app and run `ns run android` again for a full rebuild.
+- Stop app and run `npx ns run android` again for a full rebuild.
 
 Emulator freezes / system UI not responding:
 
